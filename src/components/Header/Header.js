@@ -15,7 +15,12 @@ function Header(props) {
         variant="dark"
         id="navBar"
       >
-        <Navbar.Brand href="/">Recess</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img src="/images/icon.png" alt="Recess" id="logo" width="50px" />
+        </Navbar.Brand>
+        <Navbar.Brand href="/" id="recessName">
+          Recess
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
           id="responsive-navbar-nav"

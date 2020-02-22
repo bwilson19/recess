@@ -6,12 +6,22 @@
 }
 
 #searchBar {
-  margin-top: 20vh;
+  margin-top: 10vh;
   background-color: rgb(7, 29, 9, .7);
-  padding: 5rem;
+  padding: 4rem;
 }
 
 h1{
     color:white;
     text-align: center;
+}
+
+h3{
+    color:white;
+    text-align: center;
+}
+
+#heading {
+    background-color: rgb(7, 29, 9, .7);
+  padding: 3rem;
 }

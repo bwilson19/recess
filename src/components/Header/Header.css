@@ -1,3 +1,8 @@
-#navBar{
-    background-color: rgb(7, 29, 9);
+#navBar {
+  background-color: rgb(7, 29, 9);
+}
+
+#recessName {
+  font-family: 'Sedgwick Ave Display';
+  font-size: 2rem;
 }
