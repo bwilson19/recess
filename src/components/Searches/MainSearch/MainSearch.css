@@ -1,0 +1,17 @@
+#searchContainer {
+  height: 100vh;
+  background-image: url(/images/bg.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#searchBar {
+  margin-top: 20vh;
+  background-color: rgb(7, 29, 9, .7);
+  padding: 5rem;
+}
+
+h1{
+    color:white;
+    text-align: center;
+}

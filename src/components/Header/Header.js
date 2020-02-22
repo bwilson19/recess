@@ -8,7 +8,13 @@ function Header(props) {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" id="navbar" variant="light">
+      <Navbar
+        collapseOnSelect
+        sticky="top"
+        expand="lg"
+        variant="dark"
+        id="navBar"
+      >
         <Navbar.Brand href="/">Recess</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
