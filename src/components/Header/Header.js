@@ -16,7 +16,7 @@ function Header(props) {
         id="navBar"
       >
         <Navbar.Brand href="/">
-          <img src="/images/icon.png" alt="Recess" id="logo" width="50px" />
+          <img src="/images/icon.png" alt="Recess" id="logo" width="40px" />
         </Navbar.Brand>
         <Navbar.Brand href="/" id="recessName">
           Recess
