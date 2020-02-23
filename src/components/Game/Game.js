@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
-import { Jumbotron } from 'react-bootstrap';
+import {
+  Jumbotron,
+  Container,
+  Col,
+  Row,
+  Card,
+  ListGroup,
+  CardDeck
+} from 'react-bootstrap';
 import { sample } from 'lodash';
 
 function Game(props) {
   const [pickedTeamOne, setTeamOne] = useState([]);
   const [pickedTeamTwo, setTeamTwo] = useState([]);
 
-  let players = ['Brendan', 'James', 'Matt', 'Mikey', 'Nick', 'Jess'];
+  let players = [
+    { name: 'Brendan', id: '1' },
+    { name: 'Jess', id: '2' },
+    { name: 'Mikey', id: '3' },
+    { name: 'James', id: '4' },
+    { name: 'Nick', id: '5' },
+    { name: 'Tory', id: '6' }
+  ];
 
   const pickTeams = () => {
     let teamOne = [];
@@ -16,12 +31,10 @@ function Game(props) {
       if (i % 2 === 0) {
         teamOne.push(randomPlayer);
         players.splice(players.indexOf(randomPlayer), 1);
-        console.log('this is team one: ' + teamOne);
         setTeamOne(teamOne);
       } else {
         teamTwo.push(randomPlayer);
         players.splice(players.indexOf(randomPlayer), 1);
-        console.log('this is team two: ' + teamTwo);
         setTeamTwo(teamTwo);
       }
     }
@@ -29,7 +42,63 @@ function Game(props) {
 
   return (
     <>
-      <div>
+      <Jumbotron fluid>
+        <Container>
+          <h1>Fluid jumbotron</h1>
+          <p>
+            This is a modified jumbotron that occupies the entire horizontal
+            space of its parent.
+          </p>
+        </Container>
+      </Jumbotron>
+      <Container>
+        <Row>
+          <Col sm={8}>
+            <Jumbotron fluid>
+              <Container>
+                <h1>Fluid jumbotron</h1>
+                <p>
+                  This is a modified jumbotron that occupies the entire
+                  horizontal space of its parent.
+                </p>
+              </Container>
+            </Jumbotron>
+            <CardDeck>
+              <Card style={{ width: '18rem' }}>
+                <Card.Header>Team One</Card.Header>
+                <ListGroup variant="flush">
+                  {pickedTeamOne.map(player => (
+                    <ListGroup.Item key={player.id}>
+                      {player.name}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card>
+              <Card style={{ width: '18rem' }}>
+                <Card.Header>Team Two</Card.Header>
+                <ListGroup variant="flush">
+                  {pickedTeamTwo.map(player => (
+                    <ListGroup.Item key={player.id}>
+                      {player.name}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card>
+            </CardDeck>
+          </Col>
+          <Col sm={4}>
+            <Card style={{ width: '18rem' }}>
+              <Card.Header>Roster</Card.Header>
+              <ListGroup variant="flush">
+                {players.map(player => (
+                  <ListGroup.Item key={player.id}>{player.name}</ListGroup.Item>
+                ))}
+              </ListGroup>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      {/* <div>
         <p>Players:{players}</p>
       </div>
       <div>
@@ -37,7 +106,7 @@ function Game(props) {
       </div>
       <div>
         <p>Team Two:{pickedTeamTwo}</p>
-      </div>
+      </div> */}
       <div>
         <button onClick={pickTeams}>Pick Teams</button>
       </div>
