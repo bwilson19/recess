@@ -7,7 +7,9 @@ import {
   Row,
   Col,
   Nav,
-  ListGroup
+  ListGroup,
+  Button,
+  Card
 } from 'react-bootstrap';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
@@ -22,7 +24,7 @@ function League(props) {
   };
 
   let games = [
-    {name: 'Westlake', date: 'Tue, Feb 25th 2020', id: 1},
+    { name: 'Westlake', date: 'Tue, Feb 25th 2020', id: 1 },
     { name: 'West Sunset', date: 'Wed, Feb 26th 2020', id: 2 },
     { name: 'Portero Hill', date: 'Thu, Feb 27th 2020', id: 3 }
   ];
@@ -62,15 +64,18 @@ function League(props) {
         <Row>
           <Col lg={8}>
             <Jumbotron fluid>
-              <Container>
+              <Container align="center">
                 <h1>Upcoming Games</h1>
+                <Button onClick={() => setCurrentGames('')}>
+                  Show All Games
+                </Button>
               </Container>
             </Jumbotron>
             {!currentGames && (
               <ListGroup>
                 {games.map(game => (
-                  <Link to="/game">
-                    <ListGroup.Item key={game.id}>{game.name}</ListGroup.Item>
+                  <Link to="/game" key={game.id}>
+                    <ListGroup.Item>{game.name}</ListGroup.Item>
                   </Link>
                 ))}
               </ListGroup>
@@ -78,15 +83,22 @@ function League(props) {
             {currentGames && (
               <ListGroup>
                 {currentGames.map(game => (
-                  <Link to="/game">
-                    <ListGroup.Item key={game.id}>{game.name}</ListGroup.Item>
+                  <Link to="/game" key={game.id}>
+                    <ListGroup.Item>{game.name}</ListGroup.Item>
                   </Link>
                 ))}
               </ListGroup>
             )}
           </Col>
           <Col lg={4}>
-            <Calendar onChange={changeDate} value={date} />
+            <Container align="center">
+              <Card>
+                <Card.Header as="h5">When do you want to play?</Card.Header>
+                <Card.Body>
+                  <Calendar onChange={changeDate} value={date} />
+                </Card.Body>
+              </Card>
+            </Container>
           </Col>
         </Row>
       </Container>

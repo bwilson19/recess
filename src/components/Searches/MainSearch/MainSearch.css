@@ -11,13 +11,13 @@
   padding: 4rem;
 }
 
-h1{
+#heading h1{
     color:white;
     text-align: center;
     font-family: 'Sedgwick Ave Display';
 }
 
-h3{
+#heading h3{
     color:white;
     text-align: center;
     

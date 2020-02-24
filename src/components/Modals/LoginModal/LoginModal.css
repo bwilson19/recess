@@ -1,0 +1,14 @@
+#modalHeader{
+    background-color: rgb(0, 136, 170);
+    color: white
+}
+
+#modalTabs {
+    border-bottom:1px solid rgb(218, 215, 215);
+    
+}
+
+.nav {
+    border-bottom: white;
+    margin-left: 1rem;
+}

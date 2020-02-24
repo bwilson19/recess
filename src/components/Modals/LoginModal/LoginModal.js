@@ -11,14 +11,14 @@ function LoginModal(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton id="modalHeader">
           <Modal.Title id="contained-modal-title-vcenter">
             Sign Up or Login
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Tab.Container defaultActiveKey="first">
-            <Row>
+            <Row id="modalTabs">
               <Nav fill variant="tabs" className="flex-row">
                 <Col sm={100}>
                   <Nav.Item className="nav">

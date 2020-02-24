@@ -7,6 +7,7 @@ import MainSearch from '../Searches/MainSearch/MainSearch';
 import Browse from '../Browse/Browse';
 import Game from '../Game/Game';
 import League from '../League/League';
+import Footer from '../Footer/Footer'
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           }}
         />
       </Switch>
+      <Footer />
     </div>
   );
 }
