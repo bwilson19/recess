@@ -9,21 +9,30 @@ import {
   Nav,
   ListGroup
 } from 'react-bootstrap';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import './League.css';
 
 function League(props) {
   const [date, setDate] = useState(new Date());
-  const [dateFilter, setDateFilter] = useState([]);
+  const [currentGames, setCurrentGames] = useState('');
   const changeDate = date => {
     setDate(date);
+    filterGames(date);
   };
 
   let games = [
-    { name: 'Westlake', date: 'Feb 24th', id: '1' },
-    { name: 'West Sunset', date: 'Feb 25th', id: '2' },
-    { name: 'Portero Hill', date: 'Feb 26th', id: '3' }
+    {name: 'Westlake', date: 'Tue, Feb 25th 2020', id: 1},
+    { name: 'West Sunset', date: 'Wed, Feb 26th 2020', id: 2 },
+    { name: 'Portero Hill', date: 'Thu, Feb 27th 2020', id: 3 }
   ];
+
+  const filterGames = date => {
+    let formatted = moment(date).format('ddd, MMM Do YYYY');
+    console.log(formatted);
+    let filtered = games.filter(result => result.date.includes(formatted));
+    setCurrentGames(filtered);
+  };
 
   return (
     <>
@@ -57,13 +66,24 @@ function League(props) {
                 <h1>Upcoming Games</h1>
               </Container>
             </Jumbotron>
-            <ListGroup>
-              {games.map(game => (
-                <Link to="/game">
-                  <ListGroup.Item key={game.id}>{game.name}</ListGroup.Item>
-                </Link>
-              ))}
-            </ListGroup>
+            {!currentGames && (
+              <ListGroup>
+                {games.map(game => (
+                  <Link to="/game">
+                    <ListGroup.Item key={game.id}>{game.name}</ListGroup.Item>
+                  </Link>
+                ))}
+              </ListGroup>
+            )}
+            {currentGames && (
+              <ListGroup>
+                {currentGames.map(game => (
+                  <Link to="/game">
+                    <ListGroup.Item key={game.id}>{game.name}</ListGroup.Item>
+                  </Link>
+                ))}
+              </ListGroup>
+            )}
           </Col>
           <Col lg={4}>
             <Calendar onChange={changeDate} value={date} />
