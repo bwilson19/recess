@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../Header/Header';
 import MainSearch from '../Searches/MainSearch/MainSearch';
 import Browse from '../Browse/Browse';
-import Game from '../Game/Game'
+import Game from '../Game/Game';
+import League from '../League/League';
 
 function App() {
   return (
@@ -18,7 +19,30 @@ function App() {
           render={() => {
             return (
               <>
-                <MainSearch /> <Browse /><Game/>
+                <MainSearch />
+                <Browse />
+              </>
+            );
+          }}
+        />
+        <Route
+          exact
+          path="/league"
+          render={() => {
+            return (
+              <>
+                <League />
+              </>
+            );
+          }}
+        />
+        <Route
+          exact
+          path="/game"
+          render={() => {
+            return (
+              <>
+                <Game />
               </>
             );
           }}

@@ -6,9 +6,13 @@ import {
   Row,
   Card,
   ListGroup,
-  CardDeck
+  CardDeck,
+  Button,
+  Image,
+  Form
 } from 'react-bootstrap';
 import { sample } from 'lodash';
+import './Game.css';
 
 function Game(props) {
   const [pickedTeamOne, setTeamOne] = useState([]);
@@ -41,7 +45,7 @@ function Game(props) {
   };
 
   return (
-    <>
+    <div id="gameContainer">
       <Jumbotron fluid>
         <Container>
           <h1>Fluid jumbotron</h1>
@@ -54,63 +58,90 @@ function Game(props) {
       <Container>
         <Row>
           <Col sm={8}>
-            <Jumbotron fluid>
-              <Container>
-                <h1>Fluid jumbotron</h1>
-                <p>
-                  This is a modified jumbotron that occupies the entire
-                  horizontal space of its parent.
-                </p>
-              </Container>
-            </Jumbotron>
-            <CardDeck>
-              <Card style={{ width: '18rem' }}>
-                <Card.Header>Team One</Card.Header>
-                <ListGroup variant="flush">
-                  {pickedTeamOne.map(player => (
-                    <ListGroup.Item key={player.id}>
-                      {player.name}
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup>
+            <Container>
+              <Image
+                src="https://billingssoftballassociation.com/files/2019/10/bigstock-Softball-In-A-Softball-Field-I-118759169_1.jpg"
+                fluid
+              />
+              <Card>
+                <Card.Header>Game Details</Card.Header>
+                <Card.Body>
+                  <Card.Title>Special title treatment</Card.Title>
+                  <Card.Text>
+                    With supporting text below as a natural lead-in to
+                    additional content.
+                  </Card.Text>
+                </Card.Body>
               </Card>
-              <Card style={{ width: '18rem' }}>
-                <Card.Header>Team Two</Card.Header>
-                <ListGroup variant="flush">
-                  {pickedTeamTwo.map(player => (
-                    <ListGroup.Item key={player.id}>
-                      {player.name}
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup>
+            </Container>
+            <Container style={{ margin: '1rem 0' }}>
+              <Card>
+                <Card.Header>Comments</Card.Header>
+                <Form>
+                  <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Control
+                      type="email"
+                      placeholder="enter email address"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Control as="textarea" rows="3" />
+                  </Form.Group>
+                </Form>
               </Card>
-            </CardDeck>
+            </Container>
           </Col>
           <Col sm={4}>
-            <Card style={{ width: '18rem' }}>
-              <Card.Header>Roster</Card.Header>
-              <ListGroup variant="flush">
-                {players.map(player => (
-                  <ListGroup.Item key={player.id}>{player.name}</ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card>
+            <Container>
+              <Card style={{ width: '18rem' }}>
+                <Card.Header>Roster</Card.Header>
+                <ListGroup variant="flush">
+                  {players.map(player => (
+                    <ListGroup.Item key={player.id}>
+                      {player.name}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card>
+            </Container>
+            <Container style={{ margin: '1rem 0' }}>
+              <Card style={{ width: '18rem' }}>
+                <Card.Header>Pick Teams</Card.Header>
+                <Card.Body>
+                  <Card.Title>Special title treatment</Card.Title>
+                  <Card.Text>
+                    <Button onClick={pickTeams}>Pick Teams</Button>
+                  </Card.Text>
+
+                  <CardDeck>
+                    <Card style={{ width: '18rem' }}>
+                      <Card.Header>Team One</Card.Header>
+                      <ListGroup variant="flush">
+                        {pickedTeamOne.map(player => (
+                          <ListGroup.Item key={player.id}>
+                            {player.name}
+                          </ListGroup.Item>
+                        ))}
+                      </ListGroup>
+                    </Card>
+                    <Card style={{ width: '18rem' }}>
+                      <Card.Header>Team Two</Card.Header>
+                      <ListGroup variant="flush">
+                        {pickedTeamTwo.map(player => (
+                          <ListGroup.Item key={player.id}>
+                            {player.name}
+                          </ListGroup.Item>
+                        ))}
+                      </ListGroup>
+                    </Card>
+                  </CardDeck>
+                </Card.Body>
+              </Card>
+            </Container>
           </Col>
         </Row>
       </Container>
-      {/* <div>
-        <p>Players:{players}</p>
-      </div>
-      <div>
-        <p>Team One:{pickedTeamOne}</p>
-      </div>
-      <div>
-        <p>Team Two:{pickedTeamTwo}</p>
-      </div> */}
-      <div>
-        <button onClick={pickTeams}>Pick Teams</button>
-      </div>
-    </>
+    </div>
   );
 }
 
