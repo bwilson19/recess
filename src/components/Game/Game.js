@@ -13,6 +13,7 @@ import {
 } from 'react-bootstrap';
 import { sample } from 'lodash';
 import './Game.css';
+import Map from '../Map/Map'
 
 function Game(props) {
   const [pickedTeamOne, setTeamOne] = useState([]);
@@ -74,6 +75,40 @@ function Game(props) {
                 </Card.Body>
               </Card>
             </Container>
+            <Container style={{ margin: '1rem 0' }} align="center">
+              <Card>
+                <Card.Header>Pick Teams</Card.Header>
+                <Card.Body>
+                  <Card.Title>Special title treatment</Card.Title>
+                  <Card.Text>
+                    <Button onClick={pickTeams}>Pick Teams</Button>
+                  </Card.Text>
+
+                  <CardDeck>
+                    <Card>
+                      <Card.Header>Team One</Card.Header>
+                      <ListGroup variant="flush">
+                        {pickedTeamOne.map(player => (
+                          <ListGroup.Item key={player.id}>
+                            {player.name}
+                          </ListGroup.Item>
+                        ))}
+                      </ListGroup>
+                    </Card>
+                    <Card>
+                      <Card.Header>Team Two</Card.Header>
+                      <ListGroup variant="flush">
+                        {pickedTeamTwo.map(player => (
+                          <ListGroup.Item key={player.id}>
+                            {player.name}
+                          </ListGroup.Item>
+                        ))}
+                      </ListGroup>
+                    </Card>
+                  </CardDeck>
+                </Card.Body>
+              </Card>
+            </Container>
             <Container style={{ margin: '1rem 0' }}>
               <Card>
                 <Card.Header>Comments</Card.Header>
@@ -93,7 +128,11 @@ function Game(props) {
           </Col>
           <Col sm={4}>
             <Container>
-              <Card style={{ width: '18rem' }}>
+              <Card>
+                <Card.Header>Location</Card.Header>
+                <Map />
+              </Card>
+              <Card>
                 <Card.Header>Roster</Card.Header>
                 <ListGroup variant="flush">
                   {players.map(player => (
@@ -102,40 +141,6 @@ function Game(props) {
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
-              </Card>
-            </Container>
-            <Container style={{ margin: '1rem 0' }}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Header>Pick Teams</Card.Header>
-                <Card.Body>
-                  <Card.Title>Special title treatment</Card.Title>
-                  <Card.Text>
-                    <Button onClick={pickTeams}>Pick Teams</Button>
-                  </Card.Text>
-
-                  <CardDeck>
-                    <Card style={{ width: '18rem' }}>
-                      <Card.Header>Team One</Card.Header>
-                      <ListGroup variant="flush">
-                        {pickedTeamOne.map(player => (
-                          <ListGroup.Item key={player.id}>
-                            {player.name}
-                          </ListGroup.Item>
-                        ))}
-                      </ListGroup>
-                    </Card>
-                    <Card style={{ width: '18rem' }}>
-                      <Card.Header>Team Two</Card.Header>
-                      <ListGroup variant="flush">
-                        {pickedTeamTwo.map(player => (
-                          <ListGroup.Item key={player.id}>
-                            {player.name}
-                          </ListGroup.Item>
-                        ))}
-                      </ListGroup>
-                    </Card>
-                  </CardDeck>
-                </Card.Body>
               </Card>
             </Container>
           </Col>
