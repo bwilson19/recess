@@ -58,7 +58,7 @@ function Game(props) {
       </Jumbotron>
       <Container>
         <Row>
-          <Col sm={8}>
+          <Col lg={8}>
             <Container>
               <Image
                 src="https://billingssoftballassociation.com/files/2019/10/bigstock-Softball-In-A-Softball-Field-I-118759169_1.jpg"
@@ -126,7 +126,7 @@ function Game(props) {
               </Card>
             </Container>
           </Col>
-          <Col sm={4}>
+          <Col lg={4}>
             <Container>
               <Card>
                 <Card.Header>Location</Card.Header>

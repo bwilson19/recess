@@ -43,12 +43,26 @@ function League(props) {
     <>
       <Jumbotron fluid>
         <Container>
+          <Row>
+          <Col lg={7}>
           <h1>League</h1>
           <p>
-            This is a modified jumbotron that occupies the entire horizontal
-            space of its parent.
+            San Francisco, CA
           </p>
+          </Col>
+          <Col lg={5}>
+            <h5>Commissioner: Steven</h5>
+            
+            <h6>
+              Members: 200 (See all)
+          </h6>
+              <h6>
+                Created: 2001
+          </h6>
+          </Col>
+          </Row>
         </Container>
+
       </Jumbotron>
       <Container id="leagueTabs">
         <Nav justify variant="pills" defaultActiveKey="link-0">
@@ -75,7 +89,7 @@ function League(props) {
       {currentPage === 'upcoming' && (
         <Container>
           <Row>
-            <Col lg={8}>
+            <Col lg={7}>
               <Jumbotron fluid>
                 <Container align="center">
                   <h1>Upcoming Games</h1>
@@ -103,7 +117,7 @@ function League(props) {
                 </ListGroup>
               )}
             </Col>
-            <Col lg={4}>
+            <Col lg={5}>
               <Container align="center">
                 <Card>
                   <Card.Header as="h5">When do you want to play?</Card.Header>

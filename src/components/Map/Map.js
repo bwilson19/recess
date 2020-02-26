@@ -1,6 +1,6 @@
 import React from 'react';
 import './Map.css';
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Iframe from 'react-iframe';
 
 function Map() {

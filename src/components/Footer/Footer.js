@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Navbar, Container } from 'react-bootstrap';
 
 function Footer(props) {
   

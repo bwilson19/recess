@@ -23,3 +23,11 @@
 #browseDecks h4 {
     margin-bottom: 3vh;
 }
+
+.carousel-control-prev-icon{
+   background-color: black;
+}
+
+.carousel-control-next-icon{
+    background-color: black
+}
