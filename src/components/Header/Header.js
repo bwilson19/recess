@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Nav from '../Nav/Nav';
+import LoginNav from '../Nav/LoginNav';
 import LoginForm from '../Forms/LoginForm';
 import SignupForm from '../Forms/SignupForm';
 import './Header.css';
+import { Nav, Navbar } from 'react-bootstrap';
 
 class Header extends Component {
   constructor(props) {
@@ -93,19 +94,40 @@ class Header extends Component {
     }
 
     return (
-      <div className="Header">
-        <Nav
-          logged_in={this.state.logged_in}
-          display_form={this.display_form}
-          handle_logout={this.handle_logout}
-        />
-        {form}
-        <h3>
-          {this.state.logged_in
-            ? `Hello, ${this.state.username}`
-            : 'Please Log In'}
-        </h3>
-      </div>
+      <>
+        <Navbar
+          collapseOnSelect
+          sticky="top"
+          expand="lg"
+          variant="dark"
+          id="navBar"
+        >
+          <Navbar.Brand href="/">
+            <img src="/images/icon.png" alt="Recess" id="logo" width="40px" />
+          </Navbar.Brand>
+          <Navbar.Brand href="/" id="recessName">
+            Recess
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse
+            id="responsive-navbar-nav"
+            className="justify-content-end"
+          >
+            <Nav align="center" id="navbarLogin">
+              <h3>
+                {this.state.logged_in
+                  && `Hello, ${this.state.username}`}
+              </h3>
+              <LoginNav
+                logged_in={this.state.logged_in}
+                display_form={this.display_form}
+                handle_logout={this.handle_logout}
+              />
+              {form}
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </>
     );
   }
 }

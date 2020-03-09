@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// taken from https://medium.com/@dakota.lillie/django-react-jwt-authentication-5015ee00ef9a
 class SignupForm extends React.Component {
     state = {
         username: '',

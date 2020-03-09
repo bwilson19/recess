@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Nav(props) {
+function LoginNav(props) {
     const logged_out_nav = (
         <ul>
             <li onClick={() => props.display_form('login')}>login</li>
@@ -17,9 +17,9 @@ function Nav(props) {
     return <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>;
 }
 
-export default Nav;
+export default LoginNav;
 
-Nav.propTypes = {
+LoginNav.propTypes = {
     logged_in: PropTypes.bool.isRequired,
     display_form: PropTypes.func.isRequired,
     handle_logout: PropTypes.func.isRequired
