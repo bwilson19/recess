@@ -84,9 +84,7 @@ function App() {
         <Route
           path={`/results/${lastSearch}`}
           render={() => {
-            return (
-              <Results lastSearch={lastSearch} newResults={newResults} />
-            );
+            return <Results lastSearch={lastSearch} newResults={newResults} />;
           }}
         />
         <Route
