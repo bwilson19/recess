@@ -93,18 +93,18 @@ function App() {
           render={routerProps => {
             return (
               <>
-                <League match={routerProps.match} games={games}/>
+                <League match={routerProps.match} games={games} />
               </>
             );
           }}
         />
         <Route
           exact
-          path="/game/:id"
-          render={() => {
+          path="/league/game/:id"
+          render={routerProps => {
             return (
               <>
-                <Game />
+                <Game match={routerProps.match} />
               </>
             );
           }}

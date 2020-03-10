@@ -20,6 +20,7 @@ import './League.css';
 function League(props) {
   const [date, setDate] = useState(new Date());
   const [currentGames, setCurrentGames] = useState('');
+  const [league, setLeague] = useState('');
   const [currentPage, setCurrentPage] = useState('upcoming');
   const changeDate = date => {
     setDate(date);
@@ -28,14 +29,26 @@ function League(props) {
   const { match, games } = props;
 
   useEffect(() => {
-    matchGames();
+    getLeague();
   }, []);
 
-  const matchGames = () => {
+
+  function getLeague() {
+    const url = `https://recessapi.herokuapp.com/leagues/${match.params.id}?format=json`;
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        setLeague(response);
+        matchGames(response);
+      })
+      .catch(console.error);
+  }
+
+  const matchGames = (league) => {
     let matched = games.filter(
       result =>
         result.league ===
-        `https://recessapi.herokuapp.com/leagues/${match.params.id}?format=json`
+        league.league_url
     );
     setCurrentGames(matched);
   };
@@ -52,11 +65,11 @@ function League(props) {
         <Container>
           <Row>
             <Col lg={7}>
-              <h1>League</h1>
-              <p>San Francisco, CA</p>
+              <h1>{league.name}</h1>
+              <p>{league.city}</p>
             </Col>
             <Col lg={5}>
-              <h5>Commissioner: Steven</h5>
+              <h5>Manager: {league.manager}</h5>
 
               <h6>Members: 200 (See all)</h6>
               <h6>Created: 2001</h6>
@@ -101,7 +114,7 @@ function League(props) {
               {games && !currentGames && (
                 <ListGroup>
                   {games.map(game => (
-                    <Link to="/game" key={game.id}>
+                    <Link to={`game/${game.id}`} key={game.id}>
                       <ListGroup.Item>{game.name}</ListGroup.Item>
                     </Link>
                   ))}
@@ -110,7 +123,7 @@ function League(props) {
               {games && currentGames && (
                 <ListGroup>
                   {currentGames.map(game => (
-                    <Link to="/game" key={game.id}>
+                    <Link to={`game/${game.id}`} key={game.id}>
                       <ListGroup.Item>{game.name}</ListGroup.Item>
                     </Link>
                   ))}
@@ -180,14 +193,12 @@ function League(props) {
         <Container>
           <Image src="/images/rules.jpg" fluid />
           <Card>
-            <Card.Header as="h5">Featured</Card.Header>
+            <Card.Header as="h5">Rules</Card.Header>
             <Card.Body>
-              <Card.Title>Special title treatment</Card.Title>
               <Card.Text>
-                With supporting text below as a natural lead-in to additional
-                content.
+                {league.rules}
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+           
             </Card.Body>
           </Card>
         </Container>

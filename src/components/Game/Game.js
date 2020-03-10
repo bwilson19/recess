@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Jumbotron,
   Container,
@@ -13,11 +13,27 @@ import {
 } from 'react-bootstrap';
 import { sample } from 'lodash';
 import './Game.css';
-import Map from '../Map/Map'
+import Map from '../Map/Map';
 
 function Game(props) {
   const [pickedTeamOne, setTeamOne] = useState([]);
   const [pickedTeamTwo, setTeamTwo] = useState([]);
+  const [game, setGame] = useState('');
+  const { match } = props;
+
+  useEffect(() => {
+    getGame();
+  }, []);
+
+  function getGame() {
+    const url = `https://recessapi.herokuapp.com/games/${match.params.id}?format=json`;
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        setGame(response);
+      })
+      .catch(console.error);
+  }
 
   let players = [
     { name: 'Brendan', id: '1' },
@@ -49,11 +65,9 @@ function Game(props) {
     <div id="gameContainer">
       <Jumbotron fluid>
         <Container>
-          <h1>Fluid jumbotron</h1>
-          <p>
-            This is a modified jumbotron that occupies the entire horizontal
-            space of its parent.
-          </p>
+          <h1>{game.name}</h1>
+          <p>{game.date}</p>
+          <p>{game.city}, {game.state}</p>
         </Container>
       </Jumbotron>
       <Container>
@@ -67,10 +81,9 @@ function Game(props) {
               <Card>
                 <Card.Header>Game Details</Card.Header>
                 <Card.Body>
-                  <Card.Title>Special title treatment</Card.Title>
+                  
                   <Card.Text>
-                    With supporting text below as a natural lead-in to
-                    additional content.
+                    {game.info}
                   </Card.Text>
                 </Card.Body>
               </Card>
