@@ -51,7 +51,7 @@ function Browse(props) {
             <CardDeck>
               {leagues.slice(0, 2).map(league => (
                 <Card key={league.id}>
-                  <Link to="/league">
+                  <Link to={`league/${league.id}`}>
                     <Card.Img
                       variant="top"
                       src="https://billingssoftballassociation.com/files/2019/10/bigstock-Softball-In-A-Softball-Field-I-118759169_1.jpg"

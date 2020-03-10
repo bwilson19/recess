@@ -114,16 +114,16 @@ class Header extends Component {
             className="justify-content-end"
           >
             <Nav align="center" id="navbarLogin">
-              <h3>
-                {this.state.logged_in
-                  && `Hello, ${this.state.username}`}
-              </h3>
+              <h3>{this.state.logged_in && `Hello, ${this.state.username}`}</h3>
               <LoginNav
                 logged_in={this.state.logged_in}
                 display_form={this.display_form}
                 handle_logout={this.handle_logout}
               />
               {form}
+              {/* <a href="url 'social:begin' 'facebook'">
+                Login with Facebook
+              </a> */}
             </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // https://www.npmjs.com/package/react-calendar
 import Calendar from 'react-calendar';
 import {
@@ -25,16 +25,23 @@ function League(props) {
     setDate(date);
     filterGames(date);
   };
+  const { match, games } = props;
 
-  let games = [
-    { name: 'Westlake', date: 'Tue, Feb 25th 2020', id: 1 },
-    { name: 'West Sunset', date: 'Wed, Feb 26th 2020', id: 2 },
-    { name: 'Portero Hill', date: 'Thu, Feb 27th 2020', id: 3 }
-  ];
+  useEffect(() => {
+    matchGames();
+  }, []);
+
+  const matchGames = () => {
+    let matched = games.filter(
+      result =>
+        result.league ===
+        `https://recessapi.herokuapp.com/leagues/${match.params.id}?format=json`
+    );
+    setCurrentGames(matched);
+  };
 
   const filterGames = date => {
-    let formatted = moment(date).format('ddd, MMM Do YYYY');
-    console.log(formatted);
+    let formatted = moment(date).format('YYYY-MM-DD');
     let filtered = games.filter(result => result.date.includes(formatted));
     setCurrentGames(filtered);
   };
@@ -44,25 +51,18 @@ function League(props) {
       <Jumbotron fluid>
         <Container>
           <Row>
-          <Col lg={7}>
-          <h1>League</h1>
-          <p>
-            San Francisco, CA
-          </p>
-          </Col>
-          <Col lg={5}>
-            <h5>Commissioner: Steven</h5>
-            
-            <h6>
-              Members: 200 (See all)
-          </h6>
-              <h6>
-                Created: 2001
-          </h6>
-          </Col>
+            <Col lg={7}>
+              <h1>League</h1>
+              <p>San Francisco, CA</p>
+            </Col>
+            <Col lg={5}>
+              <h5>Commissioner: Steven</h5>
+
+              <h6>Members: 200 (See all)</h6>
+              <h6>Created: 2001</h6>
+            </Col>
           </Row>
         </Container>
-
       </Jumbotron>
       <Container id="leagueTabs">
         <Nav justify variant="pills" defaultActiveKey="link-0">
@@ -98,7 +98,7 @@ function League(props) {
                   </Button>
                 </Container>
               </Jumbotron>
-              {!currentGames && (
+              {games && !currentGames && (
                 <ListGroup>
                   {games.map(game => (
                     <Link to="/game" key={game.id}>
@@ -107,7 +107,7 @@ function League(props) {
                   ))}
                 </ListGroup>
               )}
-              {currentGames && (
+              {games && currentGames && (
                 <ListGroup>
                   {currentGames.map(game => (
                     <Link to="/game" key={game.id}>
