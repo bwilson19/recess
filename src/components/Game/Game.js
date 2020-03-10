@@ -19,9 +19,12 @@ function Game(props) {
   const [pickedTeamOne, setTeamOne] = useState([]);
   const [pickedTeamTwo, setTeamTwo] = useState([]);
   const [game, setGame] = useState('');
+  const [matchedPosts, setMatchedPosts] = useState([]);
+  // const [matchedComments, setMatchedComments] = useState([]);
   const { match } = props;
 
   useEffect(() => {
+    getPosts();
     getGame();
   }, []);
 
@@ -34,6 +37,36 @@ function Game(props) {
       })
       .catch(console.error);
   }
+
+  function getPosts() {
+    const url = 'https://recessapi.herokuapp.com/posts/?format=json';
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        let matchedPosts = response.filter(
+          result =>
+            result.game ===
+            `https://recessapi.herokuapp.com/games/${match.params.id}?format=json`
+        );
+        setMatchedPosts(matchedPosts);
+      })
+      .catch(console.error);
+  }
+
+  // function getComments() {
+  //   const url = 'https://recessapi.herokuapp.com/comments/?format=json';
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       let matchedComments = response.filter(
+  //         result =>
+  //           result.post ===
+  //           matchedPosts.post_url
+  //       );
+  //       setMatchedComments(matchedComments);
+  //     })
+  //     .catch(console.error);
+  // }
 
   let players = [
     { name: 'Brendan', id: '1' },
@@ -67,7 +100,9 @@ function Game(props) {
         <Container>
           <h1>{game.name}</h1>
           <p>{game.date}</p>
-          <p>{game.city}, {game.state}</p>
+          <p>
+            {game.city}, {game.state}
+          </p>
         </Container>
       </Jumbotron>
       <Container>
@@ -75,16 +110,13 @@ function Game(props) {
           <Col lg={8}>
             <Container>
               <Image
-                src="https://billingssoftballassociation.com/files/2019/10/bigstock-Softball-In-A-Softball-Field-I-118759169_1.jpg"
+                src={game.image}
                 fluid
               />
               <Card>
                 <Card.Header>Game Details</Card.Header>
                 <Card.Body>
-                  
-                  <Card.Text>
-                    {game.info}
-                  </Card.Text>
+                  <Card.Text>{game.info}</Card.Text>
                 </Card.Body>
               </Card>
             </Container>
@@ -125,6 +157,9 @@ function Game(props) {
             <Container style={{ margin: '1rem 0' }}>
               <Card>
                 <Card.Header>Comments</Card.Header>
+                {matchedPosts.map(post => (
+                  <Card.Text key={post.id}>{post.body}</Card.Text>
+                ))}
                 <Form>
                   <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Control
@@ -143,7 +178,7 @@ function Game(props) {
             <Container>
               <Card>
                 <Card.Header>Location</Card.Header>
-                <Map />
+                <Map address={game.address} city={game.city} />
               </Card>
               <Card>
                 <Card.Header>Roster</Card.Header>

@@ -19,6 +19,7 @@ import './League.css';
 
 function League(props) {
   const [date, setDate] = useState(new Date());
+  const [matchedGames, setMatchedGames] = useState('');
   const [currentGames, setCurrentGames] = useState('');
   const [league, setLeague] = useState('');
   const [currentPage, setCurrentPage] = useState('upcoming');
@@ -32,7 +33,6 @@ function League(props) {
     getLeague();
   }, []);
 
-
   function getLeague() {
     const url = `https://recessapi.herokuapp.com/leagues/${match.params.id}?format=json`;
     fetch(url)
@@ -44,18 +44,14 @@ function League(props) {
       .catch(console.error);
   }
 
-  const matchGames = (league) => {
-    let matched = games.filter(
-      result =>
-        result.league ===
-        league.league_url
-    );
-    setCurrentGames(matched);
+  const matchGames = league => {
+    let matched = games.filter(result => result.league === league.league_url);
+    setMatchedGames(matched);
   };
 
   const filterGames = date => {
     let formatted = moment(date).format('YYYY-MM-DD');
-    let filtered = games.filter(result => result.date.includes(formatted));
+    let filtered = matchedGames.filter(result => result.date.includes(formatted));
     setCurrentGames(filtered);
   };
 
@@ -111,16 +107,16 @@ function League(props) {
                   </Button>
                 </Container>
               </Jumbotron>
-              {games && !currentGames && (
+              {matchedGames && !currentGames && (
                 <ListGroup>
-                  {games.map(game => (
+                  {matchedGames.map(game => (
                     <Link to={`game/${game.id}`} key={game.id}>
                       <ListGroup.Item>{game.name}</ListGroup.Item>
                     </Link>
                   ))}
                 </ListGroup>
               )}
-              {games && currentGames && (
+              {matchedGames && currentGames && (
                 <ListGroup>
                   {currentGames.map(game => (
                     <Link to={`game/${game.id}`} key={game.id}>
@@ -195,10 +191,7 @@ function League(props) {
           <Card>
             <Card.Header as="h5">Rules</Card.Header>
             <Card.Body>
-              <Card.Text>
-                {league.rules}
-              </Card.Text>
-           
+              <Card.Text>{league.rules}</Card.Text>
             </Card.Body>
           </Card>
         </Container>

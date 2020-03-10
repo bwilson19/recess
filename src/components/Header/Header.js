@@ -74,25 +74,7 @@ class Header extends Component {
     this.setState({ logged_in: false, username: '' });
   };
 
-  display_form = form => {
-    this.setState({
-      displayed_form: form
-    });
-  };
-
   render() {
-    let form;
-    switch (this.state.displayed_form) {
-      case 'login':
-        form = <LoginForm handle_login={this.handle_login} />;
-        break;
-      case 'signup':
-        form = <SignupForm handle_signup={this.handle_signup} />;
-        break;
-      default:
-        form = null;
-    }
-
     return (
       <>
         <Navbar
@@ -116,11 +98,13 @@ class Header extends Component {
             <Nav align="center" id="navbarLogin">
               <h3>{this.state.logged_in && `Hello, ${this.state.username}`}</h3>
               <LoginNav
+                handle_login={this.handle_login}
+                handle_signup={this.handle_signup}
                 logged_in={this.state.logged_in}
                 display_form={this.display_form}
                 handle_logout={this.handle_logout}
               />
-              {form}
+
               {/* <a href="url 'social:begin' 'facebook'">
                 Login with Facebook
               </a> */}

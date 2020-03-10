@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import LoginForm from '../Forms/LoginForm';
+import SignupForm from '../Forms/SignupForm';
+import { ButtonToolbar, Button } from 'react-bootstrap';
 
 function LoginNav(props) {
-    const logged_out_nav = (
-        <ul>
-            <li onClick={() => props.display_form('login')}>login</li>
-            <li onClick={() => props.display_form('signup')}>signup</li>
-        </ul>
-    );
+  const [loginModalShow, setLoginModalShow] = useState(false);
+  const [signupModalShow, setSignupModalShow] = useState(false);
 
-    const logged_in_nav = (
-        <ul>
-            <li onClick={props.handle_logout}>logout</li>
-        </ul>
-    );
-    return <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>;
+  return (
+    <div>
+      {' '}
+      <ButtonToolbar>
+        <Button variant="primary" onClick={() => setLoginModalShow(true)}>
+          Launch vertically centered modal
+        </Button>
+        <Button variant="primary" onClick={() => setSignupModalShow(true)}>
+          Launch vertically centered modal
+        </Button>
+
+        <LoginForm
+          handle_login={props.handle_login}
+          show={loginModalShow}
+          onHide={() => setLoginModalShow(false)}
+        />
+        <SignupForm
+          handle_signup={props.handle_signup}
+          show={signupModalShow}
+          onHide={() => setSignupModalShow(false)}
+        />
+      </ButtonToolbar>
+    </div>
+  );
 }
 
 export default LoginNav;
 
 LoginNav.propTypes = {
-    logged_in: PropTypes.bool.isRequired,
-    display_form: PropTypes.func.isRequired,
-    handle_logout: PropTypes.func.isRequired
+  logged_in: PropTypes.bool.isRequired,
+  handle_logout: PropTypes.func.isRequired
 };
