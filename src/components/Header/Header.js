@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginNav from '../Nav/LoginNav';
-import LoginForm from '../Forms/LoginForm';
-import SignupForm from '../Forms/SignupForm';
+
+import PostLeague from '../Post/PostLeague';
 import './Header.css';
 import { Nav, Navbar } from 'react-bootstrap';
 
@@ -96,18 +96,20 @@ class Header extends Component {
             className="justify-content-end"
           >
             <Nav align="center" id="navbarLogin">
-              <h3>{this.state.logged_in && `Hello, ${this.state.username}`}</h3>
               <LoginNav
                 handle_login={this.handle_login}
                 handle_signup={this.handle_signup}
                 logged_in={this.state.logged_in}
                 display_form={this.display_form}
                 handle_logout={this.handle_logout}
+                username={this.state.username}
               />
-
               {/* <a href="url 'social:begin' 'facebook'">
                 Login with Facebook
               </a> */}
+             
+              {this.state.logged_in &&
+              <PostLeague />}
             </Nav>
           </Navbar.Collapse>
         </Navbar>

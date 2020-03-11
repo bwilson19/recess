@@ -14,6 +14,7 @@ import {
   Image
 } from 'react-bootstrap';
 import moment from 'moment';
+import PostGame from '../Post/PostGame';
 import { Link } from 'react-router-dom';
 import './League.css';
 
@@ -51,14 +52,16 @@ function League(props) {
 
   const filterGames = date => {
     let formatted = moment(date).format('YYYY-MM-DD');
-    let filtered = matchedGames.filter(result => result.date.includes(formatted));
+    let filtered = matchedGames.filter(result =>
+      result.date.includes(formatted)
+    );
     setCurrentGames(filtered);
   };
 
   return (
     <>
-      <Jumbotron fluid>
-        <Container>
+      <Jumbotron fluid id="leagueHeader">
+        <Container id="leagueSubHeader">
           <Row>
             <Col lg={7}>
               <h1>{league.name}</h1>
@@ -66,9 +69,7 @@ function League(props) {
             </Col>
             <Col lg={5}>
               <h5>Manager: {league.manager}</h5>
-
-              <h6>Members: 200 (See all)</h6>
-              <h6>Created: 2001</h6>
+              <h5>Sport: {league.sport}</h5>
             </Col>
           </Row>
         </Container>
@@ -83,11 +84,11 @@ function League(props) {
               Upcoming Games
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          {/* <Nav.Item>
             <Nav.Link eventKey="link-1" onClick={() => setCurrentPage('stats')}>
               Statistics
             </Nav.Link>
-          </Nav.Item>
+          </Nav.Item> */}
           <Nav.Item>
             <Nav.Link eventKey="link-2" onClick={() => setCurrentPage('rules')}>
               Rules
@@ -105,6 +106,7 @@ function League(props) {
                   <Button onClick={() => setCurrentGames('')}>
                     Show All Games
                   </Button>
+                  {/* <PostGame url={`https://recessapi.herokuapp.com/leagues/${match.params.id}`} /> */}
                 </Container>
               </Jumbotron>
               {matchedGames && !currentGames && (
@@ -139,7 +141,7 @@ function League(props) {
           </Row>
         </Container>
       )}
-      {currentPage === 'stats' && (
+      {/* {currentPage === 'stats' && (
         <Container>
           <Table responsive>
             <thead>
@@ -184,7 +186,7 @@ function League(props) {
             </tbody>
           </Table>
         </Container>
-      )}
+      )} */}
       {currentPage === 'rules' && (
         <Container>
           <Image src="/images/rules.jpg" fluid />

@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header/>
       <Switch>
         <Route
           exact
@@ -109,6 +109,7 @@ function App() {
             );
           }}
         />
+       
       </Switch>
       <Footer />
     </div>

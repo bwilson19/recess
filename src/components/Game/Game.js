@@ -96,8 +96,8 @@ function Game(props) {
 
   return (
     <div id="gameContainer">
-      <Jumbotron fluid>
-        <Container>
+      <Jumbotron fluid id="gameHeader">
+        <Container id="gameSubHeader">
           <h1>{game.name}</h1>
           <p>{game.date}</p>
           <p>
@@ -154,7 +154,7 @@ function Game(props) {
                 </Card.Body>
               </Card>
             </Container>
-            <Container style={{ margin: '1rem 0' }}>
+            {/* <Container style={{ margin: '1rem 0' }}>
               <Card>
                 <Card.Header>Comments</Card.Header>
                 {matchedPosts.map(post => (
@@ -172,7 +172,7 @@ function Game(props) {
                   </Form.Group>
                 </Form>
               </Card>
-            </Container>
+            </Container> */}
           </Col>
           <Col lg={4}>
             <Container>

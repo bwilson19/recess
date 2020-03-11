@@ -10,14 +10,15 @@ function LoginNav(props) {
 
   return (
     <div>
-      {' '}
-      <ButtonToolbar>
+          {props.logged_in && <><h3>Hello, {props.username}</h3><p onClick={props.handle_logout}>logout</p></>}
+          {!props.logged_in && <ButtonToolbar>
         <Button variant="primary" onClick={() => setLoginModalShow(true)}>
-          Launch vertically centered modal
+         Login
         </Button>
         <Button variant="primary" onClick={() => setSignupModalShow(true)}>
-          Launch vertically centered modal
+          Signup
         </Button>
+        
 
         <LoginForm
           handle_login={props.handle_login}
@@ -29,7 +30,7 @@ function LoginNav(props) {
           show={signupModalShow}
           onHide={() => setSignupModalShow(false)}
         />
-      </ButtonToolbar>
+      </ButtonToolbar>}
     </div>
   );
 }
