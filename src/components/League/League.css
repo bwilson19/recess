@@ -1,15 +1,21 @@
 #leagueTabs {
     margin-bottom: 4vh;
+   
 }
 
 #leagueHeader{
 background-image: url('/images/leaguebg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 #leagueSubHeader{
     background-color: rgba(7, 29, 9, .6);
     padding: 1rem;
     color: white;
+   
+}
+#league{
+    font-family: 'Sen', sans-serif;;
 }

@@ -39,8 +39,8 @@ function Browse(props) {
           </Form.Control>
         </Form.Group>
       </Container> */}
-
-      <Container className="browseDecks">
+<div id="featuredLeagues">
+      <Container className="browseDecks" >
         <Container align="center">
           <h4>Featured Leagues</h4>
         </Container>
@@ -52,7 +52,6 @@ function Browse(props) {
               {leagues.slice(0, 3).map(league => (
                 <Card key={league.id}>
                   <Link to={`league/${league.id}`}>
-                   
                     <Card.Body>
                       <Card.Title>{league.name}</Card.Title>
                       <Card.Text>{league.city}</Card.Text>
@@ -70,7 +69,6 @@ function Browse(props) {
               {leagues.slice(3, 6).map(league => (
                 <Card key={league.id}>
                   <Link to={`league/${league.id}`}>
-                    
                     <Card.Body>
                       <Card.Title>{league.name}</Card.Title>
                       <Card.Text>{league.city}</Card.Text>
@@ -83,11 +81,14 @@ function Browse(props) {
           </Container>
         </Carousel.Item>
       </Carousel>
-      <Container className="browseDecks">
+      </div >
+      <div id="featuredGames">
+      <Container className="browseDecks" >
         <Container align="center">
           <h4>Featured Games</h4>
         </Container>
       </Container>
+
       <Carousel>
         <Carousel.Item>
           <Container>
@@ -95,11 +96,7 @@ function Browse(props) {
               {games.slice(0, 3).map(game => (
                 <Card key={game.id}>
                   <Link to={`league/game/${game.id}`}>
-                    <Card.Img
-                      variant="top"
-                      src={game.image}
-                      height="200px"
-                    />
+                    <Card.Img variant="top" src={game.image} height="200px" />
                     <Card.Body>
                       <Card.Title>{game.name}</Card.Title>
                       <Card.Text>{game.city}</Card.Text>
@@ -117,11 +114,7 @@ function Browse(props) {
               {games.slice(3, 6).map(game => (
                 <Card key={game.id}>
                   <Link to={`league/game/${game.id}`}>
-                    <Card.Img
-                      variant="top"
-                      src={game.image}
-                      height="200px"
-                    />
+                    <Card.Img variant="top" src={game.image} height="200px" />
                     <Card.Body>
                       <Card.Title>{game.name}</Card.Title>
                       <Card.Text>{game.city}</Card.Text>
@@ -134,6 +127,7 @@ function Browse(props) {
           </Container>
         </Carousel.Item>
       </Carousel>
+      </div>
     </>
   );
 }

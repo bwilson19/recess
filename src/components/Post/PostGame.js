@@ -1,5 +1,4 @@
 import React from 'react';
-import './PostGame.css';
 import { Form, Col, Button, ButtonToolbar, Modal } from 'react-bootstrap';
 
 function MyVerticallyCenteredModal(props) {
@@ -14,6 +13,7 @@ function MyVerticallyCenteredModal(props) {
     data.date = event.target['date'].value;
     data.info = event.target['info'].value;
     data.image = event.target['image_url'].value;
+    data.league = props.id;
     postNewGame(data);
   };
 

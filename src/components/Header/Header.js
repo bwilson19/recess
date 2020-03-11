@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginNav from '../Nav/LoginNav';
+import LoginNav from '../LoginNav/LoginNav';
 
 import PostLeague from '../Post/PostLeague';
 import './Header.css';
@@ -96,6 +96,7 @@ class Header extends Component {
             className="justify-content-end"
           >
             <Nav align="center" id="navbarLogin">
+              {this.state.logged_in && <PostLeague />}
               <LoginNav
                 handle_login={this.handle_login}
                 handle_signup={this.handle_signup}
@@ -107,9 +108,6 @@ class Header extends Component {
               {/* <a href="url 'social:begin' 'facebook'">
                 Login with Facebook
               </a> */}
-             
-              {this.state.logged_in &&
-              <PostLeague />}
             </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -14,20 +14,32 @@
 #browseDecks h5 {
     margin-right: 1vw;
     padding-top: 1vh;
+    color:white;
 }
 
-.browseDecks{
-    margin-top: 3vh;
+h4 {
+    margin-bottom: 1vh;
+    color:white;
+    font-size: 2rem;
+    text-decoration: underline;
 }
 
-#browseDecks h4 {
-    margin-bottom: 3vh;
+
+
+
+.carousel{
+    padding: 7vh 0;
 }
 
-.carousel-control-prev-icon{
-   background-color: black;
+#featuredLeagues{
+    background-color: rgb(7, 29, 9);
+    padding: 3rem;
+    margin-top:-2rem;
+    font-family: 'Sen', sans-serif;
 }
 
-.carousel-control-next-icon{
-    background-color: black
+#featuredGames{
+    background-color: rgb(15, 61, 19);
+    padding: 3rem;
+    font-family: 'Sen', sans-serif;
 }

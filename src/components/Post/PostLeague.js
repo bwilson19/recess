@@ -1,6 +1,6 @@
 import React from 'react';
-import './PostGame.css';
-import { Form, Col, Button, ButtonToolbar, Modal } from 'react-bootstrap';
+import './PostLeague.css';
+import { Form, Col, Button, Modal, Nav } from 'react-bootstrap';
 
 function MyVerticallyCenteredModal(props) {
 
@@ -118,17 +118,15 @@ function PostLeague(props) {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <ButtonToolbar>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Create new league
-      </Button>
-
+    <Nav id="leagueNav">
+      <Nav.Item>
+        <Button onClick={() => setModalShow(true)}>Create new league</Button>
+      </Nav.Item>
       <MyVerticallyCenteredModal
-        
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
-    </ButtonToolbar>
+    </Nav>
   );
 }
 

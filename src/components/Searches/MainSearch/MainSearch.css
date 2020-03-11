@@ -6,24 +6,30 @@
 }
 
 #searchBar {
-  margin-top: 10vh;
-  background-color: rgb(7, 29, 9, .7);
-  padding: 4rem;
+  background-color: rgb(7, 29, 9, .9);
+  padding: 3rem;
+ 
+  margin-top: 2vh;
 }
 
 #heading h1{
     color:white;
     text-align: center;
-    font-family: 'Sedgwick Ave Display';
+    font-family: 'Sen', sans-serif;
 }
 
 #heading h3{
     color:white;
     text-align: center;
-    
+    font-family: 'Sen', sans-serif;
 }
 
 #heading {
-    background-color: rgb(7, 29, 9, .7);
+    background-color: rgb(7, 29, 9, .9);
   padding: 3rem;
+  margin-top: 15vh;
+}
+
+#recessSpan{
+  font-family: 'Sedgwick Ave Display';
 }

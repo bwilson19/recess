@@ -59,7 +59,7 @@ function League(props) {
   };
 
   return (
-    <>
+    <div id="league">
       <Jumbotron fluid id="leagueHeader">
         <Container id="leagueSubHeader">
           <Row>
@@ -106,7 +106,7 @@ function League(props) {
                   <Button onClick={() => setCurrentGames('')}>
                     Show All Games
                   </Button>
-                  {/* <PostGame url={`https://recessapi.herokuapp.com/leagues/${match.params.id}`} /> */}
+                  {/* <PostGame id={match.params.id} /> */}
                 </Container>
               </Jumbotron>
               {matchedGames && !currentGames && (
@@ -198,7 +198,7 @@ function League(props) {
           </Card>
         </Container>
       )}
-    </>
+    </div>
   );
 }
 

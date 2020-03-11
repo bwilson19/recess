@@ -21,17 +21,16 @@ function MainSearch(props) {
     <div>
       <Jumbotron fluid id="searchContainer">
         <Container id="heading">
-          <h1>Welcome to Recess </h1>
-          <h3>
-            Find, manage, and add local pickup games, and connect with
-            teammates!
-          </h3>
+          <h1>
+            Welcome to <span id="recessSpan">Recess</span>
+          </h1>
+          <h3>Find pickup games and connect with teammates!</h3>
         </Container>
         <Container id="searchBar">
           <Form onSubmit={handleSubmit}>
             <InputGroup className="mb-3">
               <FormControl
-                placeholder="Enter search here"
+                placeholder="Search for a game or a league"
                 name="searchString"
                 onChange={handleChange}
                 value={searchString}

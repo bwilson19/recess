@@ -1,8 +1,14 @@
 #navBar {
   background-color: rgb(7, 29, 9);
+  font-family: 'Sen', sans-serif;
 }
 
 #recessName {
   font-family: 'Sedgwick Ave Display';
   font-size: 1.6rem;
+}
+
+.btn-primary{
+    background-color: darkgreen;
+    border-color: darkgreen;
 }
