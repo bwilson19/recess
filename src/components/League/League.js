@@ -145,7 +145,7 @@ function League(props) {
                 <h5>Manager: {league.manager}</h5>
                 <h5>Sport: {league.sport}</h5>
               </Col>
-              {localStorage.getItem('token') && <Button onClick={() => setEditing(true)}>Edit League</Button>}
+              {localStorage.getItem('token') && <Button id="editLeagueButton" onClick={() => setEditing(true)}>Edit League</Button>}
             </Row>
           )}
           {editing && (
@@ -204,9 +204,15 @@ function League(props) {
                   name="rules"
                 />
               </Form.Group>
+              <div id="editButtonToolbar">
+                <div>
               <Button type="submit">Submit</Button>
-              <Button onClick={deleteLeague}>Delete League</Button>
+                </div>
+              <div>
+              <Button id="deleteButton" onClick={deleteLeague}>Delete League</Button>
               <Button onClick={() => setEditing(false)}>Cancel</Button>
+              </div>
+              </div>
             </Form>
           )}
         </Container>
@@ -237,10 +243,10 @@ function League(props) {
         <Container>
           <Row>
             <Col lg={7}>
-              <Jumbotron fluid>
-                <Container align="center">
+              <Jumbotron align="center" id="upcomingGamesContainer" fluid>
+                <Container id="upcomingGames" >
                   <h1>Upcoming Games</h1>
-                  <ButtonToolbar><Button onClick={() => setCurrentGames(matchedGames)}>
+                  <ButtonToolbar ><Button id="showAllButton" onClick={() => setCurrentGames(matchedGames)}>
                     Show All Games
                   </Button>
                   {localStorage.getItem('token') && <PostGame id={match.params.id} />}

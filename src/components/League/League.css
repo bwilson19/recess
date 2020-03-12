@@ -20,7 +20,40 @@ background-image: url('/images/leaguebg.jpg');
     font-family: 'Sen', sans-serif;;
 }
 
-.btn-primary{
-    margin-left: 2vw;
+#showAllButton{
+    margin-right: 2vw;
     text-align: center;
+}
+
+#upcomingGames{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#upcomingGamesContainer{
+    background-color: rgb(199, 247, 199);
+}
+
+.nav-pills .nav-link.active {
+     background-color: darkgreen;
+}
+a {
+    color:black
+}
+
+#editLeagueButton{
+    margin-left: 2vw;
+    background-color: rgb(88, 15, 15);
+}
+
+#editButtonToolbar{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#deleteButton{
+    background-color: red;
 }

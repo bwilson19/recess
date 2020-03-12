@@ -260,9 +260,15 @@ function Game(props) {
               />
             </Form.Group>
 
-            <Button type="submit">Submit</Button>
-            <Button onClick={deleteGame}>Delete Game</Button>
-            <Button onClick={() => setEditing(false)}>Cancel</Button>
+            <div id="editButtonToolbar">
+              <div>
+                <Button type="submit">Submit</Button>
+              </div>
+              <div>
+                <Button id="deleteButton" onClick={deleteGame}>Delete Game</Button>
+                <Button onClick={() => setEditing(false)}>Cancel</Button>
+              </div>
+            </div>
           </Form>}
         </Container>
       </Jumbotron>

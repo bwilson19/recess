@@ -62,6 +62,7 @@ function Browse(props) {
               ))}
             </CardDeck>
           </Container>
+          
         </Carousel.Item>
         <Carousel.Item>
           <Container>

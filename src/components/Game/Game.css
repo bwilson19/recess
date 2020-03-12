@@ -21,3 +21,14 @@ background-image: url('/images/gamebg.jpg');
     padding: 1rem;
     color: white;
 }
+
+#editButtonToolbar{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+
+#deleteButton{
+    background-color: red;
+}
