@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Col, Button, ButtonToolbar, Modal } from 'react-bootstrap';
+import { Form, Col, Button, ButtonToolbar, Modal, Container } from 'react-bootstrap';
 
 function MyVerticallyCenteredModal(props) {
 
@@ -47,10 +47,11 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          Add New Game
         </Modal.Title>
       </Modal.Header >
       <>
+        <Container>
         <Form onSubmit={handleSubmit}>
           <Form.Row>
             <Col>
@@ -131,6 +132,7 @@ function MyVerticallyCenteredModal(props) {
             Submit
           </Button>
         </Form>
+        </Container>
       </>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
