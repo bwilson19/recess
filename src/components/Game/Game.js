@@ -283,9 +283,9 @@ function Game(props) {
             </Container>
             <Container style={{ margin: '1rem 0' }} align="center">
               <Card>
-                <Card.Header>Pick Teams</Card.Header>
+                <Card.Header>Team Creation</Card.Header>
                 <Card.Body>
-                  <Card.Title>Special title treatment</Card.Title>
+            
                   <Card.Text>
                     <Button onClick={pickTeams}>Pick Teams</Button>
                   </Card.Text>
