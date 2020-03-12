@@ -26,9 +26,6 @@ function MyVerticallyCenteredModal(props) {
       .then(response => {
         response.json();
       })
-      .then(data => {
-        window.location.href = `http://recessgames.herokuapp.com`;
-      })
       .catch(error => {
         console.error('Error:', error);
       });
