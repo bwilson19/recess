@@ -7,7 +7,7 @@ import MainSearch from '../Searches/MainSearch/MainSearch';
 import Browse from '../Browse/Browse';
 import Game from '../Game/Game';
 import League from '../League/League';
-import Footer from '../Footer/Footer';
+
 import Results from '../Results/Results';
 
 function App() {
@@ -111,7 +111,7 @@ function App() {
         />
        
       </Switch>
-      <Footer />
+ 
     </div>
   );
 }

@@ -28,7 +28,9 @@ function MyVerticallyCenteredModal(props) {
          response.json();
        })
        .then(data => {
-         console.log('Success:', data);
+         window.location.replace(
+           `http://localhost:3000`
+         );
        })
        .catch(error => {
          console.error('Error:', error);
@@ -55,7 +57,7 @@ function MyVerticallyCenteredModal(props) {
 
                 <Form.Control
                   type="text"
-                  placeholder="Enter name of event"
+                  placeholder="Enter name of league"
                   name="name"
                 />
               </Form.Group>
@@ -102,7 +104,7 @@ function MyVerticallyCenteredModal(props) {
               name="rules"
             />
           </Form.Group>
-          <Button variant="outline-success" type="submit">
+          <Button variant="outline-success" type="submit" onClick={props.onHide}>
             Submit
           </Button>
         </Form>

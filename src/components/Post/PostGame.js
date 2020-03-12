@@ -2,7 +2,8 @@ import React from 'react';
 import { Form, Col, Button, ButtonToolbar, Modal } from 'react-bootstrap';
 
 function MyVerticallyCenteredModal(props) {
-  const handleSubmit = event => {
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     let data = {};
     data.name = event.target['name'].value;
@@ -18,6 +19,7 @@ function MyVerticallyCenteredModal(props) {
   };
 
   const postNewGame = data => {
+    console.log(data)
     const url = 'https://recessapi.herokuapp.com/games/';
     fetch(url, {
       method: 'POST',
@@ -47,7 +49,7 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">
           Modal heading
         </Modal.Title>
-      </Modal.Header>
+      </Modal.Header >
       <>
         <Form onSubmit={handleSubmit}>
           <Form.Row>
@@ -125,7 +127,7 @@ function MyVerticallyCenteredModal(props) {
             />
           </Form.Group>
        
-          <Button variant="outline-success" type="submit">
+          <Button variant="outline-success" type="submit" onClick={props.onHide}>
             Submit
           </Button>
         </Form>
@@ -149,6 +151,7 @@ function PostGame(props) {
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        id={props.id}
       />
     </ButtonToolbar>
   );

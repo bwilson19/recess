@@ -24,7 +24,6 @@ function Game(props) {
   const { match } = props;
 
   useEffect(() => {
-    getPosts();
     getGame();
   }, []);
 
@@ -38,20 +37,20 @@ function Game(props) {
       .catch(console.error);
   }
 
-  function getPosts() {
-    const url = 'https://recessapi.herokuapp.com/posts/?format=json';
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        let matchedPosts = response.filter(
-          result =>
-            result.game ===
-            `https://recessapi.herokuapp.com/games/${match.params.id}?format=json`
-        );
-        setMatchedPosts(matchedPosts);
-      })
-      .catch(console.error);
-  }
+  // function getPosts() {
+  //   const url = 'https://recessapi.herokuapp.com/posts/?format=json';
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       let matchedPosts = response.filter(
+  //         result =>
+  //           result.game ===
+  //           `https://recessapi.herokuapp.com/games/${match.params.id}?format=json`
+  //       );
+  //       setMatchedPosts(matchedPosts);
+  //     })
+  //     .catch(console.error);
+  // }
 
   // function getComments() {
   //   const url = 'https://recessapi.herokuapp.com/comments/?format=json';

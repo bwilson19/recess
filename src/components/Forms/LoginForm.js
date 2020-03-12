@@ -30,28 +30,28 @@ class LoginForm extends React.Component {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
+                    Login
         </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form onSubmit={e => this.props.handle_login(e, this.state)}>
-                    <h4>Log In</h4>
-                    <label htmlFor="username">Username</label>
-                    <input
+                <Form onSubmit={e => this.props.handle_login(e, this.state)}>
+                
+                    <Form.Label htmlFor="username">Username</Form.Label>
+                    <Form.Control
                         type="text"
                         name="username"
                         value={this.state.username}
                         onChange={this.handle_change}
                     />
-                    <label htmlFor="password">Password</label>
-                    <input
+                    <Form.Label htmlFor="password">Password</Form.Label>
+                    <Form.Control
                         type="password"
                         name="password"
                         value={this.state.password}
                         onChange={this.handle_change}
                     />
-                    <input type="submit" />
-                </form>
+                    <Button type="submit">Login</Button>
+                </Form>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={this.props.onHide}>Close</Button>

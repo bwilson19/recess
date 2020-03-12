@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 import { CardColumns, Card } from 'react-bootstrap';
 import './Results.css';
 
@@ -16,18 +15,22 @@ function Results(props) {
             </div>
             <div id="resultsGrid">
                 <CardColumns>
-                    {newResults.map(event => (
-                        <Card key={event._id}>
-                            <Link to={`/${event._id}`}>
-                                <Card.Img variant="top" src={event.imageUrl} alt={event.name} />
+                    {newResults.map(result => (
+                        <Card key={result.id}>
+                            {result.address && <Link to={`/league/game/${result.id}`}>
                                 <Card.Body>
-                                    <Card.Title>{event.name}</Card.Title>
-                                    <Card.Text>
-                                        {moment(event.date).format('ddd, MMM Do YYYY')}
-                                    </Card.Text>
-                                    <Card.Text>{event.location}</Card.Text>
+                                    <Card.Title>Game: {result.name}</Card.Title>
+                            
+                                    <Card.Text>{result.city}</Card.Text>
                                 </Card.Body>
-                            </Link>
+                            </Link>}
+                            {result.rules && <Link to={`/league/${result.id}`}>
+                                <Card.Body>
+                                    <Card.Title>League: {result.name}</Card.Title>
+
+                                    <Card.Text>{result.city}</Card.Text>
+                                </Card.Body>
+                            </Link>}
                         </Card>
                     ))}
                 </CardColumns>

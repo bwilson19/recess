@@ -31,6 +31,7 @@ function LoginNav(props) {
           </Nav.Item>
           <LoginForm
             handle_login={props.handle_login}
+            username={props.username}
             show={loginModalShow}
             onHide={() => setLoginModalShow(false)}
           />

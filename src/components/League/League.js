@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PostGame from '../Post/PostGame';
 // https://www.npmjs.com/package/react-calendar
 import Calendar from 'react-calendar';
 import {
@@ -10,11 +11,10 @@ import {
   ListGroup,
   Button,
   Card,
-  Table,
+  Form,
   Image
 } from 'react-bootstrap';
 import moment from 'moment';
-import PostGame from '../Post/PostGame';
 import { Link } from 'react-router-dom';
 import './League.css';
 
@@ -23,6 +23,7 @@ function League(props) {
   const [matchedGames, setMatchedGames] = useState('');
   const [currentGames, setCurrentGames] = useState('');
   const [league, setLeague] = useState('');
+  const [editing, setEditing] = useState(false);
   const [currentPage, setCurrentPage] = useState('upcoming');
   const changeDate = date => {
     setDate(date);
@@ -33,6 +34,8 @@ function League(props) {
   useEffect(() => {
     getLeague();
   }, []);
+
+  const url = `https://recessapi.herokuapp.com/leagues/${match.params.id}?format=json`;
 
   function getLeague() {
     const url = `https://recessapi.herokuapp.com/leagues/${match.params.id}?format=json`;
@@ -58,20 +61,156 @@ function League(props) {
     setCurrentGames(filtered);
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    let data = {};
+    data.name = event.target['name'].value
+      ? event.target['name'].value
+      : league.name;
+    data.manager = event.target['manager'].value
+      ? event.target['manager'].value
+      : league.manager;
+    data.city = event.target['city'].value
+      ? event.target['city'].value
+      : league.city;
+    data.sport = event.target['sport'].value
+      ? event.target['sport'].value
+      : league.sport;
+    data.rules = event.target['rules'].value
+      ? event.target['rules'].value
+      : league.rules;
+
+    console.log(data);
+    for (var propName in data) {
+      if (
+        data[propName] === null ||
+        data[propName] === '' ||
+        data[propName] === undefined
+      ) {
+        delete data[propName];
+      }
+    }
+    updateLeague(data);
+    setEditing(false);
+  };
+
+  const updateLeague = data => {
+    const url = `https://recessapi.herokuapp.com/leagues/${match.params.id}`;
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => {
+        response.json();
+      })
+      .then(data => {
+        window.location.replace(
+          `http://localhost:3000/league/${match.params.id}`
+        );
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
+  const deleteLeague = () => {
+    const url = `https://recessapi.herokuapp.com/leagues/${match.params.id}`;
+    fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        window.location.replace('http://localhost:3000/');
+      })
+      .catch(console.error);
+  };
+
   return (
     <div id="league">
       <Jumbotron fluid id="leagueHeader">
         <Container id="leagueSubHeader">
-          <Row>
-            <Col lg={7}>
-              <h1>{league.name}</h1>
-              <p>{league.city}</p>
-            </Col>
-            <Col lg={5}>
-              <h5>Manager: {league.manager}</h5>
-              <h5>Sport: {league.sport}</h5>
-            </Col>
-          </Row>
+          {!editing && (
+            <Row>
+              <Col lg={7}>
+                <h1>{league.name}</h1>
+                <p>{league.city}</p>
+              </Col>
+              <Col lg={5}>
+                <h5>Manager: {league.manager}</h5>
+                <h5>Sport: {league.sport}</h5>
+              </Col>
+              <Button onClick={() => setEditing(true)}>Edit League</Button>
+            </Row>
+          )}
+          {editing && (
+            <Form onSubmit={handleSubmit}>
+              <Form.Row>
+                <Col>
+                  <Form.Group controlId="forName">
+                    <Form.Label>Name</Form.Label>
+
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter name of league"
+                      name="name"
+                    />
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group>
+                    <Form.Label>Manager</Form.Label>
+
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter name of manager"
+                      name="manager"
+                    />
+                  </Form.Group>
+                </Col>
+              </Form.Row>
+              <Form.Row>
+                <Col>
+                  <Form.Group>
+                    <Form.Label>City</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter city"
+                      name="city"
+                    />
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group>
+                    <Form.Label>Sport</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter sport"
+                      name="sport"
+                    />
+                  </Form.Group>
+                </Col>
+              </Form.Row>
+              <Form.Group>
+                <Form.Label>Rules</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter rules"
+                  name="rules"
+                />
+              </Form.Group>
+              <Button type="submit">Submit</Button>
+              <Button onClick={deleteLeague}>Delete League</Button>
+              <Button onClick={() => setEditing(false)}>Cancel</Button>
+            </Form>
+          )}
         </Container>
       </Jumbotron>
       <Container id="leagueTabs">
@@ -106,7 +245,7 @@ function League(props) {
                   <Button onClick={() => setCurrentGames('')}>
                     Show All Games
                   </Button>
-                  {/* <PostGame id={match.params.id} /> */}
+                  <PostGame id={match.params.id} />
                 </Container>
               </Jumbotron>
               {matchedGames && !currentGames && (
