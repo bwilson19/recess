@@ -16,7 +16,7 @@ function App() {
   const [searchString, setSearchString] = useState('');
   const [lastSearch, setLastSearch] = useState('');
   const [newResults, setResults] = useState([]);
-
+  
   useEffect(() => {
     getLeagues();
     getGames();

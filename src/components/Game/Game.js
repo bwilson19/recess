@@ -183,7 +183,7 @@ function Game(props) {
           <p>{game.date}</p>
           <p>
             {game.city}, {game.state}
-            </p><Button onClick={() => setEditing(true)}>Edit Game</Button></>}
+  </p>{localStorage.getItem('token') &&<Button onClick={() => setEditing(true)}>Edit Game</Button>}</>}
           {editing && <Form onSubmit={handleSubmit}>
             <Form.Row>
               <Col>

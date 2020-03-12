@@ -145,7 +145,7 @@ function PostGame(props) {
   return (
     <ButtonToolbar>
       <Button variant="primary" onClick={() => setModalShow(true)}>
-        Create new game
+        Add Game
       </Button>
 
       <MyVerticallyCenteredModal

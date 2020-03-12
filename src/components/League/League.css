@@ -19,3 +19,8 @@ background-image: url('/images/leaguebg.jpg');
 #league{
     font-family: 'Sen', sans-serif;;
 }
+
+.btn-primary{
+    margin-left: 2vw;
+    text-align: center;
+}

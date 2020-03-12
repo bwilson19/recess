@@ -12,7 +12,7 @@ import {
   Button,
   Card,
   Form,
-  Image
+  Image, ButtonToolbar
 } from 'react-bootstrap';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
@@ -34,8 +34,6 @@ function League(props) {
   useEffect(() => {
     getLeague();
   }, []);
-
-  const url = `https://recessapi.herokuapp.com/leagues/${match.params.id}?format=json`;
 
   function getLeague() {
     const url = `https://recessapi.herokuapp.com/leagues/${match.params.id}?format=json`;
@@ -147,7 +145,7 @@ function League(props) {
                 <h5>Manager: {league.manager}</h5>
                 <h5>Sport: {league.sport}</h5>
               </Col>
-              <Button onClick={() => setEditing(true)}>Edit League</Button>
+              {localStorage.getItem('token') && <Button onClick={() => setEditing(true)}>Edit League</Button>}
             </Row>
           )}
           {editing && (
@@ -242,10 +240,11 @@ function League(props) {
               <Jumbotron fluid>
                 <Container align="center">
                   <h1>Upcoming Games</h1>
-                  <Button onClick={() => setCurrentGames('')}>
+                  <ButtonToolbar><Button onClick={() => setCurrentGames(matchedGames)}>
                     Show All Games
                   </Button>
-                  <PostGame id={match.params.id} />
+                  {localStorage.getItem('token') && <PostGame id={match.params.id} />}
+                  </ButtonToolbar>
                 </Container>
               </Jumbotron>
               {matchedGames && !currentGames && (
