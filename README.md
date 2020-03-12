@@ -8,7 +8,7 @@ Recess is an app designed to make it easier to find & create local pickup games 
 
 To see the live version, navigate to http://recessgames.herokuapp.com (Mobile Friendly)
 
-Here's a animation of the workflow: 
+Here's a animation of the workflow:
 
 ![2020-03-12 14 58 07](https://user-images.githubusercontent.com/58187597/76570154-f3a54c80-6471-11ea-9c75-af5cdcd85a5e.gif)
 
@@ -16,7 +16,6 @@ Here's a animation of the workflow:
 
 Basic Workflow Wireframe:
 ![Recess Wireframes](https://user-images.githubusercontent.com/58187597/76570452-9231ad80-6472-11ea-9f34-942414b89b35.jpg)
-
 
 ## MVP User Stories
 
@@ -41,7 +40,8 @@ Backend API Repo: https://github.com/bwilson19/recess-backend
 
 ## Component Hierarchy
 
-![Screen Shot 2020-02-20 at 4 13 56 PM](https://user-images.githubusercontent.com/56045956/74984868-0214c100-53fc-11ea-87c1-dd874c7418c1.png)
+![Project 4 Heirarchy](https://user-images.githubusercontent.com/58187597/76571474-cefea400-6474-11ea-8623-c520176073e3.jpg)
+
 
 ## Installation Instructions
 
@@ -54,11 +54,9 @@ Backend API Repo: https://github.com/bwilson19/recess-backend
 1. Fork & Clone this repo.
 2. Do your best to keep the current coding style.
 3. Submit a pull request to this current repo with the following information:
-
-- Your name
-- A link to your github repository
-- An image of the app showing what functionality/ styling you added if the change or improvement was front-facing else a code snippet explaining your enhancement & why it's beneficial.
-
+   - Your name
+   - A link to your github repository
+   - An image of the app showing what functionality/ styling you added if the change or improvement was front-facing else a code snippet explaining your enhancement & why it's beneficial.
 4. Merges will happen upon approval.
 
 ## Created By
