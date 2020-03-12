@@ -19,7 +19,8 @@ function Game(props) {
   const [pickedTeamOne, setTeamOne] = useState([]);
   const [pickedTeamTwo, setTeamTwo] = useState([]);
   const [game, setGame] = useState('');
-  const [matchedPosts, setMatchedPosts] = useState([]);
+  // const [matchedPosts, setMatchedPosts] = useState([]);
+  const [editing, setEditing] = useState(false);
   // const [matchedComments, setMatchedComments] = useState([]);
   const { match } = props;
 
@@ -93,15 +94,176 @@ function Game(props) {
     }
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    let data = {};
+    data.name = event.target['name'].value
+      ? event.target['name'].value
+      : game.name;
+    data.address = event.target['address'].value
+      ? event.target['address'].value
+      : game.address;
+    data.city = event.target['city'].value
+      ? event.target['city'].value
+      : game.city;
+    data.state = event.target['state'].value
+      ? event.target['state'].value
+      : game.state;
+    data.zipcode = event.target['zipcode'].value
+      ? event.target['zipcode'].value
+      : game.zipcode;
+    data.date = event.target['date'].value
+      ? event.target['date'].value
+      : game.date;
+    data.info = event.target['info'].value
+      ? event.target['info'].value
+      : game.info;
+    data.image = event.target['image_url'].value
+      ? event.target['image_url'].value
+      : game.image;
+    data.league = game.league;
+
+    for (var propName in data) {
+      if (
+        data[propName] === null ||
+        data[propName] === '' ||
+        data[propName] === undefined
+      ) {
+        delete data[propName];
+      }
+    }
+    updateGame(data);
+    setEditing(false);
+  };
+
+  const updateGame = data => {
+    const url = `https://recessapi.herokuapp.com/games/${match.params.id}`;
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => {
+        response.json();
+      })
+      .then(data => {
+        window.location.replace(
+          `http://localhost:3000/league/game/${match.params.id}`
+        );
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
+  const deleteGame = () => {
+    const url = `https://recessapi.herokuapp.com/games/${match.params.id}`;
+    fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        window.location.replace('http://localhost:3000/');
+      })
+      .catch(console.error);
+  };
+
   return (
     <div id="gameContainer">
       <Jumbotron fluid id="gameHeader">
-        <Container id="gameSubHeader">
-          <h1>{game.name}</h1>
+         <Container id="gameSubHeader">
+          {!editing && <><h1>{game.name}</h1>
           <p>{game.date}</p>
           <p>
             {game.city}, {game.state}
-          </p>
+            </p><Button onClick={() => setEditing(true)}>Edit Game</Button></>}
+          {editing && <Form onSubmit={handleSubmit}>
+            <Form.Row>
+              <Col>
+                <Form.Group controlId="forName">
+                  <Form.Label>Name</Form.Label>
+
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter name of event"
+                    name="name"
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Address</Form.Label>
+
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter address"
+                    name="address"
+                  />
+                </Form.Group>
+              </Col>
+            </Form.Row>
+            <Form.Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter city"
+                    name="city"
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>State</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter state"
+                    name="state"
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Zipcode</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter zipcode"
+                    name="zipcode"
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    placeholder="Enter date of game"
+                    name="date"
+                  />
+                </Form.Group>
+              </Col>
+            </Form.Row>
+            <Form.Group>
+              <Form.Label>Info</Form.Label>
+              <Form.Control type="text" placeholder="Enter info" name="info" />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Image URL</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter image URL"
+                name="image_url"
+              />
+            </Form.Group>
+
+            <Button type="submit">Submit</Button>
+            <Button onClick={deleteGame}>Delete Game</Button>
+            <Button onClick={() => setEditing(false)}>Cancel</Button>
+          </Form>}
         </Container>
       </Jumbotron>
       <Container>

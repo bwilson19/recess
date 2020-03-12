@@ -49,7 +49,7 @@ function League(props) {
   }
 
   const matchGames = league => {
-    let matched = games.filter(result => result.league === league.league_url);
+    let matched = games.filter(result => result.league === league.id);
     setMatchedGames(matched);
   };
 
@@ -81,7 +81,7 @@ function League(props) {
       ? event.target['rules'].value
       : league.rules;
 
-    console.log(data);
+  
     for (var propName in data) {
       if (
         data[propName] === null ||
