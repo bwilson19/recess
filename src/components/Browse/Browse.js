@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardDeck, Card, Container, Form, Carousel } from 'react-bootstrap';
+import { CardDeck, Card, Container, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Browse.css';
 

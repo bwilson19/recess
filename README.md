@@ -1,68 +1,66 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Recess
 
-## Available Scripts
+![homepage](https://user-images.githubusercontent.com/58187597/76569506-80e7a180-6470-11ea-9dc2-0e558cba6b69.png)
 
-In the project directory, you can run:
+## Getting Started
 
-### `yarn start`
+Recess is an app designed to make it easier to find & create local pickup games or leagues. Users are able to search through a database of games created by other users, add their own, and edit or delete games. They are also able to see the exact location of the game using a Google Map plugin.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To see the live version, navigate to http://recessgames.herokuapp.com (Mobile Friendly)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Here's a animation of the workflow: 
 
-### `yarn test`
+![2020-03-12 14 58 07](https://user-images.githubusercontent.com/58187597/76570154-f3a54c80-6471-11ea-9c75-af5cdcd85a5e.gif)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Wireframes
 
-### `yarn build`
+Basic Workflow Wireframe:
+![Recess Wireframes](https://user-images.githubusercontent.com/58187597/76570452-9231ad80-6472-11ea-9f34-942414b89b35.jpg)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## MVP User Stories
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- As a user, I want to find games/leagues in my are
+- As a user, I want to get specific details about that game (location, date, etc.)
+- As a user, I want to be able to edit or delete created games.
 
-### `yarn eject`
+## Post-MVP User Stories (Future State)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- As a user, I would like to be able to communicate with my league-mates.
+- As a user, I would like to be able to track my stats.
+- As a user, I would like to have a profile with my bio.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- React
+- Javascript
+- React Router
+- React Bootstrap
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Backend API Repo: https://github.com/bwilson19/recess-backend
 
-## Learn More
+## Component Hierarchy
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Screen Shot 2020-02-20 at 4 13 56 PM](https://user-images.githubusercontent.com/56045956/74984868-0214c100-53fc-11ea-87c1-dd874c7418c1.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation Instructions
 
-### Code Splitting
+1. Fork and clone from the GitHub repository
+2. Run npm install in the terminal to download dependencies
+3. Run npm run start in the terminal to start a host on localhost:3000.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Contribution Guidelines
 
-### Analyzing the Bundle Size
+1. Fork & Clone this repo.
+2. Do your best to keep the current coding style.
+3. Submit a pull request to this current repo with the following information:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- Your name
+- A link to your github repository
+- An image of the app showing what functionality/ styling you added if the change or improvement was front-facing else a code snippet explaining your enhancement & why it's beneficial.
 
-### Making a Progressive Web App
+4. Merges will happen upon approval.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Created By
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Brendan Wilson [GitHub] - (https://github.com/bwilson19)
