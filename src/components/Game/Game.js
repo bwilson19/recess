@@ -151,7 +151,7 @@ function Game(props) {
       })
       .then(data => {
         window.location.replace(
-          `http://localhost:3000/league/game/${match.params.id}`
+          `http://recessgames.herokuapp.com/league/game/${match.params.id}`
         );
       })
       .catch(error => {
@@ -170,7 +170,7 @@ function Game(props) {
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
-        window.location.replace('http://localhost:3000/');
+        window.location.replace('http://recessgames.herokuapp.com/');
       })
       .catch(console.error);
   };

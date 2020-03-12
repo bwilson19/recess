@@ -1,6 +1,6 @@
 import React from 'react';
 import './PostLeague.css';
-import { Form, Col, Button, Modal, Nav } from 'react-bootstrap';
+import { Form, Col, Button, Modal, Nav, Container} from 'react-bootstrap';
 
 function MyVerticallyCenteredModal(props) {
 
@@ -29,7 +29,7 @@ function MyVerticallyCenteredModal(props) {
        })
        .then(data => {
          window.location.replace(
-           `http://localhost:3000`
+           `http://recessgames.herokuapp.com`
          );
        })
        .catch(error => {
@@ -45,10 +45,11 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          Create League
         </Modal.Title>
       </Modal.Header>
       <>
+      <Container>
         <Form onSubmit={handleSubmit}>
           <Form.Row>
             <Col>
@@ -104,12 +105,14 @@ function MyVerticallyCenteredModal(props) {
               name="rules"
             />
           </Form.Group>
-          <Button variant="outline-success" type="submit" onClick={props.onHide}>
-            Submit
+            <Button type="submit" onClick={props.onHide}>
+              Submit
           </Button>
         </Form>
+        </Container>
       </>
       <Modal.Footer>
+        
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
